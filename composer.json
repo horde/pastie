@@ -21,7 +21,7 @@
         }
     ],
     "version": "1.0.0alpha1",
-    "time": "2012-07-19",
+    "time": "2016-01-13",
     "repositories": [
         {
             "type": "pear",
@@ -29,6 +29,15 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": "^5.3 || ^7"
+    },
+    "replace": {
+        "pear-pear.horde.org/pastie": "1.*",
+        "pear-horde/pastie": "1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Pastie": "lib/"
+        }
     }
 }
