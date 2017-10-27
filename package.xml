@@ -35,7 +35,6 @@
 * [jan] Officially support PHP 7.
 * [rla] Minimal conversion for Horde 5.
 * [rla] Add Rdo storage driver.
-* Initial release.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -177,7 +176,6 @@
 * [jan] Officially support PHP 7.
 * [rla] Minimal conversion for Horde 5.
 * [rla] Add Rdo storage driver.
-* Initial release.
    </notes>
   </release>
  </changelog>
