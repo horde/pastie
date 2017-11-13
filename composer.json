@@ -1,8 +1,8 @@
 {
     "name": "horde/pastie",
-    "description": "Pastie Pastebin application",
-    "type": "library",
-    "homepage": "https://pear.horde.org",
+    "description": "Pastebin application",
+    "type": "project",
+    "homepage": "https://www.horde.org",
     "license": "BSD-2-Clause",
     "authors": [
         {
@@ -12,6 +12,7 @@
         },
         {
             "name": "Ben Klang",
+            "email": null,
             "role": "lead"
         },
         {
@@ -21,7 +22,7 @@
         }
     ],
     "version": "1.0.0alpha1",
-    "time": "2017-10-17",
+    "time": "2017-11-11",
     "repositories": [
         {
             "type": "pear",
