@@ -24,7 +24,7 @@
  </lead>
  <date>2021-07-04</date>
  <version>
-  <release>1.0.0alpha1</release>
+  <release>1.0.0alpha2</release>
   <api>1.0.0alpha1</api>
  </version>
  <stability>
@@ -33,10 +33,7 @@
  </stability>
  <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
  <notes>
-* [rla] Package for H6 / composer installer.
-* [jan] Officially support PHP 7.
-* [rla] Minimal conversion for Horde 5.
-* [rla] Add Rdo storage driver.
+* 
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -163,6 +160,7 @@
   </filelist>
  </phprelease>
  <changelog>
+ 
   <release>
    <version>
     <release>1.0.0alpha1</release>
@@ -179,6 +177,21 @@
 * [jan] Officially support PHP 7.
 * [rla] Minimal conversion for Horde 5.
 * [rla] Add Rdo storage driver.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0alpha2</release>
+    <api>1.0.0alpha1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2021-07-04</date>
+   <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
+   <notes>
+* 
    </notes>
   </release>
  </changelog>

@@ -36,7 +36,7 @@ class Pastie_Application extends Horde_Registry_Application
 {
     /**
      */
-    public $version = 'H4 (1.0.0alpha1)';
+    public $version = 'H4 (1.0.0alpha2)';
 
     /**
      * @var $driver;
