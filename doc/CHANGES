@@ -1,7 +1,8 @@
-----------------
-v1.0.0alpha1-git
-----------------
+------------
+v1.0.0alpha1
+------------
 
+[rla] Package for H6 / composer installer.
 [jan] Officially support PHP 7.
 [rla] Minimal conversion for Horde 5.
 [rla] Add Rdo storage driver.

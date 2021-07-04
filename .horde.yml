@@ -5,7 +5,7 @@ full: Pastebin application
 description: >-
   An application for pasting and sharing syntax-highlighted snippets of
   arbitrary text or program code
-list:
+list: ~
 type: application
 authors:
   -
@@ -17,7 +17,7 @@ authors:
   -
     name: Ben Klang
     user: bklang
-    email:
+    email: ~
     active: true
     role: lead
   -
@@ -37,4 +37,6 @@ license:
   uri: http://www.horde.org/licenses/bsd
 dependencies:
   required:
-    php: ^5.3 || ^7
+    php: ^7
+    composer:
+      horde/horde: ^6
