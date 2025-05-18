@@ -12,7 +12,7 @@ class PasteForm extends Horde_Form
 {
     /**
      */
-    function PasteForm(&$vars)
+    function PasteForm($vars)
     {
         parent::__construct($vars, _("New Paste"));
 
