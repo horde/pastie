@@ -21,7 +21,7 @@ $url = Horde::url('paste.php');
 $form = new PasteForm($vars);
 
 if ($form->validate($vars)) {
-    $info = $form->getInfo($vars, $info);
+    $info = $form->getInfo($vars);
 
     try {
         $uuid = $pastie->driver->savePaste('default', $info['paste'], $info['syntax'], $info['title']);
