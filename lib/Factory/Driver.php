@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Pastie_Factory_Driver:: defines a factory for Pastie storage backends.
  *
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -13,7 +14,7 @@
 
 class Pastie_Factory_Driver extends Horde_Core_Factory_Base
 {
-    private $_instances = array();
+    private $_instances = [];
 
     /**
      * A Factory for the Pastie_Driver.
@@ -21,7 +22,7 @@ class Pastie_Factory_Driver extends Horde_Core_Factory_Base
      * @param array params  a hash of driver parameters. For the Rdo driver, these are the parameters for creating a Horde_Db_Adapter
      * @return Horde_Rdo_Driver  A concrete instance of Horde_Rdo_Driver with all necessary dependencies injected
      */
-    public function create($name = '', $params = array())
+    public function create($name = '', $params = [])
     {
         if (!isset($this->_instances[$name])) {
             if (!empty($params['driver'])) {
@@ -38,11 +39,11 @@ class Pastie_Factory_Driver extends Horde_Core_Factory_Base
             }
 
             switch ($class) {
-            case 'Pastie_Driver_Rdo':
-                if (empty($params['db'])) {
-                    $params['db'] = $this->_injector->getInstance('Horde_Core_Factory_Db')->create('pastie', $params);
-                }
-                break;
+                case 'Pastie_Driver_Rdo':
+                    if (empty($params['db'])) {
+                        $params['db'] = $this->_injector->getInstance('Horde_Core_Factory_Db')->create('pastie', $params);
+                    }
+                    break;
             }
             $this->_instances[$name] = new $class($params);
         }

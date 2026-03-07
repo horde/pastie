@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Pastie storage implementation for PHP's PEAR database abstraction layer.
  *
@@ -24,7 +25,7 @@
  * The table structure can be created by the scripts/sql/pastie.sql
  * script.
  *
- * Copyright 2007-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2007-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -39,7 +40,7 @@ class Pastie_Driver_Sql extends Pastie_Driver
      *
      * @var array
      */
-    protected $_params = array();
+    protected $_params = [];
 
     /**
      * Handle for the current database connection.
@@ -68,7 +69,7 @@ class Pastie_Driver_Sql extends Pastie_Driver
      *
      * @param array $params  A hash containing connection parameters.
      */
-    public function __construct($params = array())
+    public function __construct($params = [])
     {
         $this->_params = $params;
     }
@@ -86,19 +87,19 @@ class Pastie_Driver_Sql extends Pastie_Driver
 
         $bin = 'default'; // FIXME: Allow bins to be Horde_Shares
 
-        $query = 'INSERT INTO pastie_pastes (paste_id, paste_uuid, ' .
-                 'paste_bin, paste_title, paste_syntax, paste_content, ' .
-                 'paste_owner, paste_timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-        $values = array(
-                      $id,
-                      $uuid,
-                      $bin,
-                      $title,
-                      $syntax,
-                      $paste,
-                      $GLOBALS['registry']->getAuth(),
-                      time()
-        );
+        $query = 'INSERT INTO pastie_pastes (paste_id, paste_uuid, '
+                 . 'paste_bin, paste_title, paste_syntax, paste_content, '
+                 . 'paste_owner, paste_timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        $values = [
+            $id,
+            $uuid,
+            $bin,
+            $title,
+            $syntax,
+            $paste,
+            $GLOBALS['registry']->getAuth(),
+            time(),
+        ];
 
         Horde::log(sprintf('Pastie_Driver_Sql#savePaste(): %s', $query), 'DEBUG');
         Horde::log(print_r($values, true), 'DEBUG');
@@ -127,10 +128,10 @@ class Pastie_Driver_Sql extends Pastie_Driver
             throw new Pastie_Exception(_("Internal error.  Details have been logged for the administrator."));
         }
 
-        $query = 'SELECT paste_id, paste_uuid, paste_bin, paste_title, ' .
-                 'paste_syntax, paste_content, paste_owner, paste_timestamp ' .
-                 'FROM pastie_pastes ';
-        $values = array();
+        $query = 'SELECT paste_id, paste_uuid, paste_bin, paste_title, '
+                 . 'paste_syntax, paste_content, paste_owner, paste_timestamp '
+                 . 'FROM pastie_pastes ';
+        $values = [];
         if (isset($params['id'])) {
             $query .= 'WHERE paste_id = ? ';
             $values[] = $params['id'];
@@ -162,7 +163,7 @@ class Pastie_Driver_Sql extends Pastie_Driver
         $result->free();
 
         if ($row) {
-            return array(
+            return [
                 'id' => $row['paste_id'],
                 'uuid' => $row['paste_uuid'],
                 'bin' => $row['paste_bin'],
@@ -170,8 +171,8 @@ class Pastie_Driver_Sql extends Pastie_Driver
                 'syntax' => $row['paste_syntax'],
                 'paste' => $row['paste_content'],
                 'owner' => $row['paste_owner'],
-                'timestamp' => new Horde_Date($row['paste_timestamp'])
-            );
+                'timestamp' => new Horde_Date($row['paste_timestamp']),
+            ];
         } else {
             throw new Pastie_Exception(_("Invalid paste ID."));
         }
@@ -179,10 +180,10 @@ class Pastie_Driver_Sql extends Pastie_Driver
 
     public function getPastes($bin, $limit = null, $start = null)
     {
-        $query = 'SELECT paste_id, paste_uuid, paste_bin, paste_title, ' .
-                 'paste_syntax, paste_content, paste_owner, paste_timestamp ' .
-                 'FROM pastie_pastes WHERE paste_bin = ? ' .
-                 'ORDER BY paste_timestamp DESC';
+        $query = 'SELECT paste_id, paste_uuid, paste_bin, paste_title, '
+                 . 'paste_syntax, paste_content, paste_owner, paste_timestamp '
+                 . 'FROM pastie_pastes WHERE paste_bin = ? '
+                 . 'ORDER BY paste_timestamp DESC';
         $values[] = 'default'; // FIXME: Horde_Share
 
         /* Make sure we have a valid database connection. */
@@ -210,9 +211,9 @@ class Pastie_Driver_Sql extends Pastie_Driver
             throw new Horde_Exception_Wrapped($row);
         }
 
-        $pastes = array();
+        $pastes = [];
         while ($row && !($row instanceof PEAR_Error)) {
-            $pastes[$row['paste_uuid']] = array(
+            $pastes[$row['paste_uuid']] = [
                 'id' => $row['paste_id'],
                 'uuid' => $row['paste_uuid'],
                 'bin' => $row['paste_bin'],
@@ -220,8 +221,8 @@ class Pastie_Driver_Sql extends Pastie_Driver
                 'syntax' => $row['paste_syntax'],
                 'paste' => $row['paste_content'],
                 'owner' => $row['paste_owner'],
-                'timestamp' => new Horde_Date($row['paste_timestamp'])
-            );
+                'timestamp' => new Horde_Date($row['paste_timestamp']),
+            ];
 
             /* Advance to the new row in the result set. */
             $row = $result->fetchRow(DB_FETCHMODE_ASSOC);

@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Create Pastie base tables (as of Nag 2.x).
  *
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (GPL). If you
  * did not receive this file, see http://www.horde.org/licenses/gpl.
@@ -22,16 +23,16 @@ class PastieBaseTables extends Horde_Db_Migration_Base
         $tableList = $this->tables();
 
         if (!in_array('pastie_pastes', $tableList)) {
-            $t = $this->createTable('pastie_pastes', array('autoincrementKey' => 'paste_id'));
-            $t->column('paste_uuid', 'string', array('limit' => 40, 'null' => false));
-            $t->column('paste_bin', 'string', array('limit' => 64, 'null' => false));
-            $t->column('paste_title', 'string', array('limit' => 255));
-            $t->column('paste_syntax', 'string', array('limit' => 16));
+            $t = $this->createTable('pastie_pastes', ['autoincrementKey' => 'paste_id']);
+            $t->column('paste_uuid', 'string', ['limit' => 40, 'null' => false]);
+            $t->column('paste_bin', 'string', ['limit' => 64, 'null' => false]);
+            $t->column('paste_title', 'string', ['limit' => 255]);
+            $t->column('paste_syntax', 'string', ['limit' => 16]);
             $t->column('paste_content', 'text');
-            $t->column('paste_owner', 'string', array('limit' => 255));
-            $t->column('paste_timestamp', 'integer', array('null' => false));
+            $t->column('paste_owner', 'string', ['limit' => 255]);
+            $t->column('paste_timestamp', 'integer', ['null' => false]);
             $t->end();
-            $this->addIndex('paste_uuid', array('paste_uuid'));
+            $this->addIndex('paste_uuid', ['paste_uuid']);
         }
     }
 

@@ -1,9 +1,10 @@
 <?php
+
 /**
  * The Pastie_Entity_PasteMapper class contains all functions related to handling
  * paste object mapping in Pastie.
  *
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -18,7 +19,7 @@
  * The Pastie_Entity_PasteMapper class contains all functions related to handling
  * paste object mapping in Pastie.
  *
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -43,7 +44,6 @@ class Pastie_Entity_PasteMapper extends Horde_Rdo_Mapper
      * @var array
      * @access protected
      */
-    protected $_lazyRelationships = array();
+    protected $_lazyRelationships = [];
 
 }
-

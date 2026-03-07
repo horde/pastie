@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Pastie storage implementation for Horde's Rdo ORM Layer.
  *
  * Required values for $params:<pre>
  *      'db'       The Horde_Db adapter
  *
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  * Based on the original Sql driver by Ben Klang
  *
  * See the enclosed file LICENSE for license information (BSD). If you
@@ -35,7 +36,7 @@ class Pastie_Driver_Rdo extends Pastie_Driver
      *
      * @param array $params  Hash containing the connection parameters.
      */
-    public function __construct($params = array())
+    public function __construct($params = [])
     {
         $this->_db = $params['db'];
         $this->_mappers = new Horde_Rdo_Factory($this->_db);
@@ -55,16 +56,16 @@ class Pastie_Driver_Rdo extends Pastie_Driver
         $bin = 'default'; // FIXME: Allow bins to be Horde_Shares
         $uuid = new Horde_Support_Uuid();
 
-        $paste = $pm->create(array(
+        $paste = $pm->create(
+            [
                 'paste_uuid' => $uuid,
                 'paste_bin' => $bin,
                 'paste_title' => $title,
                 'paste_syntax' => $syntax,
                 'paste_content' => $content,
                 'paste_owner' => $GLOBALS['registry']->getAuth(), /* Should the driver handle this? */
-                'paste_timestamp' => time()
-            )
-
+                'paste_timestamp' => time(),
+            ]
         );
 
         return $uuid;
@@ -115,15 +116,15 @@ class Pastie_Driver_Rdo extends Pastie_Driver
         $query = new Horde_Rdo_Query($pm);
         $query->sortBy('paste_timestamp DESC');
         if ($limit !== null) {
-             if ($start === null) {
-                 $start = 0;
-             }
+            if ($start === null) {
+                $start = 0;
+            }
             $query->limit($limit, $start);
         }
-        $pastes = array();
-            foreach ($pm->find($query) as $paste) {
-                $pastes[$paste['paste_uuid']] = $this->_fromBackend($paste);
-            }
+        $pastes = [];
+        foreach ($pm->find($query) as $paste) {
+            $pastes[$paste['paste_uuid']] = $this->_fromBackend($paste);
+        }
         return $pastes;
     }
 
@@ -133,8 +134,9 @@ class Pastie_Driver_Rdo extends Pastie_Driver
      * @param array|Pastie_Entity_Paste $paste  A paste hash or Rdo object.
      * @return an application context hash
      */
-    protected function _fromBackend($paste) {
-        return array(
+    protected function _fromBackend($paste)
+    {
+        return [
             'id' => $paste['paste_id'],
             'uuid' => $paste['paste_uuid'],
             'bin' => $paste['paste_bin'],
@@ -142,7 +144,7 @@ class Pastie_Driver_Rdo extends Pastie_Driver
             'syntax' => $paste['paste_syntax'],
             'paste' => $paste['paste_content'],
             'owner' => $paste['paste_owner'],
-            'timestamp' => new Horde_Date($paste['paste_timestamp'])
-        );
+            'timestamp' => new Horde_Date($paste['paste_timestamp']),
+        ];
     }
 }

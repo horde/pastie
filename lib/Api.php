@@ -1,4 +1,3 @@
 <?php
-class Pastie_Api extends Horde_Registry_Api
-{
-}
+
+class Pastie_Api extends Horde_Registry_Api {}

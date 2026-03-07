@@ -1,12 +1,15 @@
 <?php
+
 /**
  *
  * @package Pastie
  */
 
 // This file is named LibGeshi to avoid recursive includes/requires.
-class Pastie_Highlighter_TextHighlighter extends Pastie_Highlighter {
-    public static function output($text, $syntax = 'none') {
+class Pastie_Highlighter_TextHighlighter extends Pastie_Highlighter
+{
+    public static function output($text, $syntax = 'none')
+    {
         if ($syntax == 'none') {
             return '<pre>' . $text . '</pre>';
         } else {
@@ -17,9 +20,9 @@ class Pastie_Highlighter_TextHighlighter extends Pastie_Highlighter {
             if ($highlighter instanceof PEAR_Error) {
                 throw new Horde_Exception_Wrapped($highlighter);
             }
-            $renderer = new Text_Highlighter_Renderer_Html(array(
-                "numbers" => HL_NUMBERS_LI
-            ));
+            $renderer = new Text_Highlighter_Renderer_Html([
+                "numbers" => HL_NUMBERS_LI,
+            ]);
             if ($renderer instanceof PEAR_Error) {
                 throw new Horde_Exception_Wrapped($renderer);
             }
@@ -30,7 +33,7 @@ class Pastie_Highlighter_TextHighlighter extends Pastie_Highlighter {
 
     public static function getSyntaxes()
     {
-        return array(
+        return [
             "ABAP",
             "CPP",
             "CSS",
@@ -48,7 +51,7 @@ class Pastie_Highlighter_TextHighlighter extends Pastie_Highlighter {
             "SH",
             "SQL",
             "VBSCRIPT",
-            "XML"
-        );
+            "XML",
+        ];
     }
 }

@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Pastie application API.
  *
  * This file defines Horde's core API interface. Other core Horde libraries
  * can interact with Pastie through this API.
  *
- * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2010-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -36,7 +37,7 @@ class Pastie_Application extends Horde_Registry_Application
 {
     /**
      */
-    public $version = 'H6 (1.0.0alpha2)';
+    public $version = '1.0.0-alpha4';
 
     /**
      * @var $driver;

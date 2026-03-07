@@ -1,13 +1,16 @@
 <?php
+
 /**
- * 
+ *
  * @package Pastie
  */
 require_once 'geshi.php';
 
 // This file is named LibGeshi to avoid recursive includes/requires.
-class Pastie_Highlighter_LibGeshi extends Pastie_Highlighter {
-    public static function output($text, $syntax = 'none') {
+class Pastie_Highlighter_LibGeshi extends Pastie_Highlighter
+{
+    public static function output($text, $syntax = 'none')
+    {
         if ($syntax == 'none') {
             return '<pre>' . $text . '</pre>';
         } else {
@@ -23,7 +26,7 @@ class Pastie_Highlighter_LibGeshi extends Pastie_Highlighter {
 
     public static function getSyntaxes()
     {
-        return array(
+        return [
             "4cs",
             "abap",
             "actionscript",
@@ -180,7 +183,7 @@ class Pastie_Highlighter_LibGeshi extends Pastie_Highlighter {
             "xml",
             "xorg_conf",
             "xpp",
-            "z80"
-        );
+            "z80",
+        ];
     }
 }

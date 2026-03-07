@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Add a new paste to the current pastebin.
  *
- * Copyright 2010-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2010-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -40,9 +41,9 @@ try {
     $notification->push($e);
 }
 
-$page_output->header(array(
-    'title' => $form->getTitle()
-));
-$notification->notify(array('listeners' => 'status'));
+$page_output->header([
+    'title' => $form->getTitle(),
+]);
+$notification->notify(['listeners' => 'status']);
 require PASTIE_TEMPLATES . '/paste.inc';
 $page_output->footer();

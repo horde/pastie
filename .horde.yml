@@ -27,7 +27,7 @@ authors:
     active: true
     role: lead
 version:
-  release: 1.0.0alpha2
+  release: 1.0.0-alpha4
   api: 1.0.0alpha1
 state:
   release: alpha
@@ -40,3 +40,7 @@ dependencies:
     php: ^7
     composer:
       horde/horde: ^6
+quality:
+  phpstan:
+    level: 9
+vendor: horde

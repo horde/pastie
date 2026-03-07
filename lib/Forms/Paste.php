@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2010 Alkaloid Networks LLC <http://www.alkaloid.net>
+ * Copyright 2010-2026 Alkaloid Networks LLC <http://www.alkaloid.net>
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -12,13 +13,13 @@ class PasteForm extends Horde_Form
 {
     /**
      */
-    function PasteForm($vars)
+    public function PasteForm($vars)
     {
         parent::__construct($vars, _("New Paste"));
 
         $engine = 'Pastie_Highlighter_' . $GLOBALS['conf']['highlighter']['engine'];
-        $tmp = call_user_func(array($engine, 'getSyntaxes'));
-        $types = array();
+        $tmp = call_user_func([$engine, 'getSyntaxes']);
+        $types = [];
         foreach ($tmp as $type) {
             $types[$type] = $type;
         }
@@ -32,11 +33,25 @@ class PasteForm extends Horde_Form
 
         $this->addVariable(_("Title"), 'title', 'text', false);
 
-        $this->addVariable(_("Syntax"), 'syntax', 'enum', true,
-                   false, null, array($types, false));
+        $this->addVariable(
+            _("Syntax"),
+            'syntax',
+            'enum',
+            true,
+            false,
+            null,
+            [$types, false]
+        );
 
-        $this->addVariable(_("Paste"), 'paste', 'longtext', true, false, null,
-                           array('rows' => 20, 'cols' => 100));
+        $this->addVariable(
+            _("Paste"),
+            'paste',
+            'longtext',
+            true,
+            false,
+            null,
+            ['rows' => 20, 'cols' => 100]
+        );
 
         return true;
     }
