@@ -12,9 +12,12 @@
  * @package Pastie
  */
 
+use Horde\Pastie\PastieConfig;
+
 class Pastie_Factory_Driver extends Horde_Core_Factory_Base
 {
     private $_instances = [];
+
 
     /**
      * A Factory for the Pastie_Driver.
@@ -24,12 +27,14 @@ class Pastie_Factory_Driver extends Horde_Core_Factory_Base
      */
     public function create($name = '', $params = [])
     {
+        $config = $injector->get('PastieConfig');
+        
         if (!isset($this->_instances[$name])) {
             if (!empty($params['driver'])) {
                 $driver = $params['driver'];
                 unset($params['driver']);
             } else {
-                $driver = $GLOBALS['conf']['storage']['driver'];
+                $driver = $config->get('storage.driver']);
                 $params = Horde::getDriverConfig('storage', $driver);
             }
             $class = 'Pastie_Driver_' . ucfirst(basename($driver));
