@@ -15,9 +15,10 @@ class PasteForm extends Horde_Form
      */
     public function PasteForm($vars)
     {
+        $config = $injector->get('PastieConfig');
         parent::__construct($vars, _("New Paste"));
 
-        $engine = 'Pastie_Highlighter_' . $GLOBALS['conf']['highlighter']['engine'];
+        $engine = 'Pastie_Highlighter_' . $config->get('highlighter.engine']);
         $tmp = call_user_func([$engine, 'getSyntaxes']);
         $types = [];
         foreach ($tmp as $type) {
