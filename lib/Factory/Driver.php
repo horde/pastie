@@ -34,7 +34,7 @@ class Pastie_Factory_Driver extends Horde_Core_Factory_Base
                 $driver = $params['driver'];
                 unset($params['driver']);
             } else {
-                $driver = $config->get('storage.driver']);
+                $driver = $config->get('storage.driver');
                 $params = Horde::getDriverConfig('storage', $driver);
             }
             $class = 'Pastie_Driver_' . ucfirst(basename($driver));
